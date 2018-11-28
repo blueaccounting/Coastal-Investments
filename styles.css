@@ -148,6 +148,15 @@ h1, h2 {
   margin-bottom: 0;
 }
 
+img {
+  border: 0;
+  display: block;
+  height: auto !important;
+  max-width: 100%;
+  -ms-interpolation-mode: bicubic;
+  line-height: 0;
+}
+
 .link-like,
 a {
   color: #00b4f1;
