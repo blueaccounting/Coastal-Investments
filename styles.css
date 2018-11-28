@@ -157,6 +157,11 @@ img {
   line-height: 0;
 }
 
+dialog img {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+}
+
 .link-like,
 a {
   color: #00b4f1;
