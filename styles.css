@@ -50,7 +50,7 @@ dialog::backdrop {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   margin: 0;
-  max-height: 90%;
+  max-height: 100%;
   overflow: scroll;
 }
 
@@ -78,8 +78,7 @@ dialog::backdrop {
 
 .dialog-content {
   padding: 1em;
-  max-width: 90%;
-  width: 70%;
+  max-width: 1280px;
   border-radius: 2px;
 }
 
@@ -133,13 +132,31 @@ dialog > div a {
  * Base stuff
  * -------------------------------------------------------------------------- */
 
+/**
+ * The HTML wrapping tag takes some very general styles. Normalize some rendering.
+ */
+html {
+  font-size: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  height: 100%;
+  text-rendering: optimizeLegibility;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font: 125% / 1.5 "Montserrat", sans-serif;
-  padding: 2em 0;
+  font-family: "Montserrat", Verdana, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  line-height: 1.375;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -201,7 +218,7 @@ a:active {
 
 .main {
   margin: 0 auto;
-  padding: 0 1em;
+  padding: 0;
 }
 
 footer {
