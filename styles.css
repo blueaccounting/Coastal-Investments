@@ -36,6 +36,10 @@ dialog[open] {
   right: 0;
 }
 
+dialog::-webkit-backdrop {
+  background-color: rgba(0, 0, 0, 0.66);
+}
+
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.66);
 }
@@ -48,7 +52,9 @@ dialog::backdrop {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+       transform: translate(-50%, -50%);
   margin: 0;
   max-height: 100%;
   overflow: scroll;
@@ -58,28 +64,66 @@ dialog::backdrop {
  * Extra dialog styling to make it shiny
  * -------------------------------------------------------------------------- */
 
+@-webkit-keyframes fade-in {
+  from { opacity: 0;  }
+  to { opacity: 1;  }
+}
+
+@-moz-keyframes fade-in {
+  from { opacity: 0;  }
+  to { opacity: 1;  }
+}
+
+@-o-keyframes fade-in {
+  from { opacity: 0;  }
+  to { opacity: 1;  }
+}
+
 @keyframes fade-in {
   from { opacity: 0;  }
   to { opacity: 1;  }
 }
 
+@-webkit-keyframes appear {
+  from { -webkit-transform: translate(-50%, -40%); transform: translate(-50%, -40%); opacity: 0; }
+  to { -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@-moz-keyframes appear {
+  from { -moz-transform: translate(-50%, -40%); transform: translate(-50%, -40%); opacity: 0; }
+  to { -moz-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@-o-keyframes appear {
+  from { -o-transform: translate(-50%, -40%); transform: translate(-50%, -40%); opacity: 0; }
+  to { -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 1; }
+}
+
 @keyframes appear {
-  from { transform: translate(-50%, -40%); opacity: 0; }
-  to { transform: translate(-50%, -50%); opacity: 1; }
+  from { -webkit-transform: translate(-50%, -40%); -moz-transform: translate(-50%, -40%); -o-transform: translate(-50%, -40%); transform: translate(-50%, -40%); opacity: 0; }
+  to { -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 1; }
 }
 
 .dialog:not([aria-hidden='true']) > .dialog-overlay {
-  animation: fade-in 200ms 1 both;
+  -webkit-animation: fade-in 200ms 1 both;
+     -moz-animation: fade-in 200ms 1 both;
+       -o-animation: fade-in 200ms 1 both;
+          animation: fade-in 200ms 1 both;
 }
 
 .dialog:not([aria-hidden='true']) > .dialog-content {
-  animation: appear 400ms 150ms 1 both;
+  -webkit-animation: appear 400ms 150ms 1 both;
+     -moz-animation: appear 400ms 150ms 1 both;
+       -o-animation: appear 400ms 150ms 1 both;
+          animation: appear 400ms 150ms 1 both;
 }
 
 .dialog-content {
   padding: 1em;
   max-width: 1280px;
-  border-radius: 2px;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
 }
 
 
@@ -111,6 +155,9 @@ dialog::backdrop {
   height: 1.2em;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: 0.15s;
+  -o-transition: 0.15s;
+  -moz-transition: 0.15s;
   transition: 0.15s;
 }
 
@@ -146,7 +193,9 @@ html {
 }
 
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -239,6 +288,7 @@ form {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
+    display: -moz-box;
     display: flex;
   }
 }
@@ -262,7 +312,8 @@ form input {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     -ms-flex: 1;
-    flex: 1;
+    -moz-box-flex: 1;
+         flex: 1;
     border-right: 0;
     width: auto;
     margin: 0;
@@ -277,6 +328,9 @@ form button {
   font-size: inherit;
   padding: 8px 15px;
   cursor: pointer;
+  -webkit-transition: 0.15s;
+  -o-transition: 0.15s;
+  -moz-transition: 0.15s;
   transition: 0.15s;
   display: inline-block;
 }
