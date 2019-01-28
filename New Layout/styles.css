@@ -1,0 +1,349 @@
+/* -------------------------------------------------------------------------- *\
+ * Necessary styling for the dialog to work
+ * -------------------------------------------------------------------------- */
+
+/**
+ * When `<dialog>` is properly supported, the overlay is implied and can be
+ * styled with `::backdrop`, which means the DOM one should be removed.
+ */
+[data-a11y-dialog-native] .dialog-overlay {
+  display: none;
+}
+
+/**
+ * When `<dialog>` is not supported, its default display is `inline` which can
+ * cause layout issues.
+ */
+dialog[open] {
+  display: block;
+}
+
+.dialog[aria-hidden="true"] {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------- *\
+ * Styling to make the dialog look like a dialog
+ * -------------------------------------------------------------------------- */
+
+.dialog-overlay {
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.66);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+dialog::-webkit-backdrop {
+  background-color: rgba(0, 0, 0, 0.66);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.66);
+}
+
+.dialog-content {
+  background-color: rgb(255, 255, 255);
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+       transform: translate(-50%, -50%);
+  margin: 0;
+  max-height: 100%;
+  overflow: scroll;
+}
+
+/* -------------------------------------------------------------------------- *\
+ * Extra dialog styling to make it shiny
+ * -------------------------------------------------------------------------- */
+
+@-webkit-keyframes fade-in {
+  from { opacity: 0;  }
+  to { opacity: 1;  }
+}
+
+@-moz-keyframes fade-in {
+  from { opacity: 0;  }
+  to { opacity: 1;  }
+}
+
+@-o-keyframes fade-in {
+  from { opacity: 0;  }
+  to { opacity: 1;  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0;  }
+  to { opacity: 1;  }
+}
+
+@-webkit-keyframes appear {
+  from { -webkit-transform: translate(-50%, -40%); transform: translate(-50%, -40%); opacity: 0; }
+  to { -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@-moz-keyframes appear {
+  from { -moz-transform: translate(-50%, -40%); transform: translate(-50%, -40%); opacity: 0; }
+  to { -moz-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@-o-keyframes appear {
+  from { -o-transform: translate(-50%, -40%); transform: translate(-50%, -40%); opacity: 0; }
+  to { -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@keyframes appear {
+  from { -webkit-transform: translate(-50%, -40%); -moz-transform: translate(-50%, -40%); -o-transform: translate(-50%, -40%); transform: translate(-50%, -40%); opacity: 0; }
+  to { -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 1; }
+}
+
+.dialog:not([aria-hidden='true']) > .dialog-overlay {
+  -webkit-animation: fade-in 200ms 1 both;
+     -moz-animation: fade-in 200ms 1 both;
+       -o-animation: fade-in 200ms 1 both;
+          animation: fade-in 200ms 1 both;
+}
+
+.dialog:not([aria-hidden='true']) > .dialog-content {
+  -webkit-animation: appear 400ms 150ms 1 both;
+     -moz-animation: appear 400ms 150ms 1 both;
+       -o-animation: appear 400ms 150ms 1 both;
+          animation: appear 400ms 150ms 1 both;
+}
+
+.dialog-content {
+  padding: 1em;
+  max-width: 1280px;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+}
+
+
+@media screen and (min-width: 700px) {
+  .dialog-content {
+    padding: 2em;
+  }
+}
+
+.dialog-overlay {
+  background-color: rgba(43, 46, 56, 0.9);
+}
+
+.dialog h1 {
+  margin: 0;
+  font-size: 1.25em;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 1.25em;
+  width: 1.2em;
+  height: 1.2em;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: 0.15s;
+  -o-transition: 0.15s;
+  -moz-transition: 0.15s;
+  transition: 0.15s;
+}
+
+@media screen and (min-width: 700px) {
+  .dialog-close {
+    top: 1em;
+    right: 1em;
+  }
+}
+
+/**
+ * Remove underlines from <img> links
+ */
+dialog > div a {
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------------------------- *\
+ * Base stuff
+ * -------------------------------------------------------------------------- */
+
+/**
+ * The HTML wrapping tag takes some very general styles. Normalize some rendering.
+ */
+html {
+  font-size: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  height: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", Verdana, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  line-height: 1.375;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 1.6em;
+  line-height: 1.1;
+}
+
+h1 span {
+  color: #E50050;
+}
+
+h1, h2 {
+  margin-bottom: 0;
+}
+
+img {
+  border: 0;
+  display: block;
+  height: auto !important;
+  max-width: 100%;
+  -ms-interpolation-mode: bicubic;
+  line-height: 0;
+}
+
+dialog img {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+}
+
+.link-like,
+a {
+  color: #00b4f1;
+}
+
+.link-like:hover,
+.link-like:active,
+a:hover,
+a:active {
+  color: #E50050;
+}
+
+/* -------------------------------------------------------------------------- *\
+ * Helpers
+ * -------------------------------------------------------------------------- */
+
+.link-like {
+  background-color: transparent;
+  text-decoration: underline;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------------------------- *\
+ * Layout
+ * -------------------------------------------------------------------------- */
+
+.main {
+  margin: 0 auto;
+  padding: 0;
+}
+
+footer {
+  border-top: 1px solid silver;
+  padding: 20px 0;
+}
+
+/* -------------------------------------------------------------------------- *\
+ * Form styling
+ * -------------------------------------------------------------------------- */
+
+form {
+  margin-top: 2em;
+}
+
+@media screen and (min-width: 700px) {
+  form {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: flex;
+  }
+}
+
+form label {
+  font-weight: bold;
+  margin: 5px 10px 5px 0;
+  vertical-align: middle;
+}
+
+form input {
+  font: inherit;
+  padding: 0.25em;
+  border: 1px solid silver;
+  width: 100%;
+  margin: 0.25em 0 1em;
+}
+
+@media screen and (min-width: 700px) {
+  form input {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    -moz-box-flex: 1;
+         flex: 1;
+    border-right: 0;
+    width: auto;
+    margin: 0;
+  }
+}
+
+form button {
+  background-color: #81c784;
+  color: white;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 8px 15px;
+  cursor: pointer;
+  -webkit-transition: 0.15s;
+  -o-transition: 0.15s;
+  -moz-transition: 0.15s;
+  transition: 0.15s;
+  display: inline-block;
+}
+
+form button:hover,
+form button:active {
+  background-color: #66bb6a;
+}
+
+.close-image {
+  -webkit-appearance: none;
+  border: 0 none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
